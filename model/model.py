@@ -1,6 +1,9 @@
 from database.dao import DAO
 import networkx as nx
 
+from model.hub import Hub
+
+
 class Model:
     def __init__(self):
         self._nodes = None
@@ -13,6 +16,9 @@ class Model:
         guadagno medio per spedizione >= threshold (euro)
         """
         # TODO
+        hubs= DAO.read_hub()
+        hubs_dict= {hub.id: Hub for hub in hubs}
+        spedizioni= DAO.read_spedizione(hubs_dict)
 
     def get_num_edges(self):
         """
