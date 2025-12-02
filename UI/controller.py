@@ -17,4 +17,17 @@ class Controller:
         * Lista di Tratte che superano il costo indicato come soglia
         """
         # TODO
+        if self._view.guadagno_medio_minimo.value.isdigit():
+            self._view.lista_visualizzazione.controls.clear()
+            self._model.costruisci_grafo(self._view.guadagno_medio_minimo.value)
+            self._view.lista_visualizzazione.controls.append(f'numero di nodi: {self._model.get_num_nodes()}')
+            self._view.lista_visualizzazione.controls.append(f'numero di tratte :{self._model.get_num_edges()}')
+            self._view.lista_visualizzazione.controls.append(f'lista tratte: {self._model.get_all_edges()}')
+            self._view.update()
+        else:
+            self._view.show_alert('Inserire un valore valido!')
+
+
+
+
 
